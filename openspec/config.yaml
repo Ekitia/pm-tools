@@ -1,0 +1,82 @@
+schema: spec-driven
+
+context: |
+  ## Project Overview
+  PM-Tools — aplikasi project management sederhana dengan fitur Kanban board
+  untuk membantu tim mengelola task. Pendekatan monolith (satu codebase Next.js).
+
+  ## Tech Stack
+  - **Framework**: Next.js 16 (App Router) dengan TypeScript
+  - **Runtime**: React 19, Node.js
+  - **Styling**: Tailwind CSS v4 (PostCSS plugin via @tailwindcss/postcss)
+  - **UI Components**: shadcn/ui (Radix UI primitives + Tailwind)
+  - **Architecture**: Monolith — semua fitur dalam satu Next.js app
+  - **State Management**: React state / Context API (client-side), Server Actions (mutations)
+  - **Data**: Local storage / in-memory untuk MVP, siap migrasi ke database (Prisma + PostgreSQL)
+
+  ## Domain Knowledge
+  - Domain: Project Management / Task Tracking
+  - Fitur utama: Kanban board dengan 4 kolom status:
+    1. **Backlog** — task yang belum diprioritaskan
+    2. **Todo** — task yang siap dikerjakan
+    3. **In Progress** — task yang sedang dikerjakan
+    4. **Done** — task yang sudah selesai
+  - Entitas utama: Project, Board, Column (status), Task (card)
+  - Setiap task memiliki: title, description, status, priority, assignee, created_at, updated_at
+  - Task bisa di-drag & drop antar kolom untuk mengubah status
+  - Mendukung multiple project/board di masa depan
+
+  ## Conventions
+  - **Language**: TypeScript strict mode, no `any` type
+  - **File naming**: kebab-case untuk file & folder (contoh: `task-card.tsx`)
+  - **Component naming**: PascalCase (contoh: `TaskCard`, `KanbanBoard`)
+  - **Directory structure (App Router)**:
+    - `app/` — routes & layouts (Next.js App Router)
+    - `components/` — reusable UI components
+    - `components/ui/` — shadcn/ui base components
+    - `lib/` — utilities, helpers, types, constants
+    - `hooks/` — custom React hooks
+    - `types/` — shared TypeScript type definitions
+    - `actions/` — Server Actions
+  - **Imports**: gunakan path alias `@/*` (mapped ke root project)
+  - **Commits**: conventional commits (feat:, fix:, chore:, docs:, refactor:)
+  - **Exports**: named exports untuk components, barrel exports di index.ts per folder
+
+  ## Style Guide
+  - Gunakan Tailwind CSS v4 utility classes langsung di JSX, hindari CSS custom kecuali perlu
+  - Gunakan shadcn/ui components sebagai building blocks (Button, Card, Dialog, Badge, dll.)
+  - Semua komponen harus responsive (mobile-first approach)
+  - Gunakan CSS variables / Tailwind theme tokens untuk warna agar konsisten
+  - Prefer Server Components secara default, gunakan "use client" hanya jika butuh interactivity
+  - Pisahkan logic & presentasi: custom hooks untuk logic, components untuk render
+  - Accessibility: semua interactive elements harus keyboard accessible & memiliki ARIA labels
+
+  ## General
+  - Bahasa kode: English (variabel, fungsi, class, komentar, skema database, nama folder/file)
+  - Bahasa dokumentasi: Indonesian (boleh campur English untuk istilah teknis)
+
+rules:
+  proposal:
+    - Tulis proposal dalam bahasa Indonesia, technical terms boleh dalam bahasa Inggris
+    - Sertakan section "Batasan / Non-goals" jika ada
+    - Jelaskan dampak terhadap fitur eksisting
+  tasks:
+    - Pecah task menjadi chunk maksimal 2 jam kerja
+    - Setiap task harus bisa di-test secara independen
+    - Sertakan acceptance criteria yang jelas
+    - |
+      Setiap task WAJIB diberi label kategori dengan prefix:
+        [BE]   - Backend (API, service, database, queue, AI/RAG)
+        [FE]   - Frontend (UI component, page, styling, client-side logic)
+        [DOCS] - Documentation (README, API docs, guides)
+      Format penomoran: <group>,<urutan> [LABEL] <deskripsi task>
+      Contoh:
+        1.1 [BE] Membuat schema database untuk tabel users
+        1.2 [BE] Membuat API endpoint POST /api/v1/auth/login
+        2.1 [FE] Membuat halaman login dengan form validation
+        2.2 [FE] Integrasi login page dengan API auth
+        3.1 [DOCS] Menulis dokumentasi API authentication
+
+  specs:
+    - Sertakan type definitions untuk setiap entitas baru
+    - Dokumentasikan props untuk setiap komponen baru
