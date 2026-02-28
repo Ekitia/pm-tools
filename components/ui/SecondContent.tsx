@@ -66,9 +66,9 @@ function SecondMenu() {
 
 function Teamspaces() {
     return (
-        <div className="flex flex-col text-gray-400 ml-2 mt-5">
+        <div className="flex flex-col text-gray-400 mt-5">
             <h2 className="text-sm">Teamspaces</h2>
-            <div className="flex items-center text-black mt-3">
+            <div className="flex items-center text-black mt-2">
                 <div className="flex items-center text-black p-1.5 w-full rounded-md hover:bg-sky-100 cursor-pointer transition-all duration-200">
                     <Search className="flex mr-3" size={16} />
                     <h2 className="text-sm">Marketing</h2>
@@ -80,23 +80,31 @@ function Teamspaces() {
 
 function Projects() {
     return (
-        <div className="flex flex-col text-gray-400 ml-2 mt-5">
+        <div className="flex flex-col text-gray-400 mt-5">
             <h2 className="text-sm">Projects</h2>
-            <div className="flex items-center text-black mt-4">
-                <Rocket className="flex mr-3" size={16} />
-                <h2 className="text-sm">Auto-campaigns launch</h2>
+            <div className="flex items-center text-black mt-2">
+                <div className="flex items-center text-black p-1.5 w-full rounded-md hover:bg-sky-100 cursor-pointer transition-all duration-200">
+                    <Rocket className="flex mr-3" size={16} />
+                    <h2 className="text-sm">Auto-campaigns launch</h2>
+                </div>
             </div>
-            <div className="flex items-center text-black mt-3 pl-3">
-                <Layers className="flex mr-3" size={16} />
-                <h2 className="text-sm">Work items</h2>
+            <div className="flex items-center text-black ml-2">
+                <div className="flex items-center text-black p-1.5 w-full rounded-md hover:bg-sky-100 cursor-pointer transition-all duration-200">
+                    <Layers className="flex mr-3" size={16} />
+                    <h2 className="text-sm">Work items</h2>
+                </div>
             </div>
-            <div className="flex items-center text-black mt-3 pl-3">
-                <RefreshCcwDot className="flex mr-3" size={16} />
-                <h2 className="text-sm">Cycles</h2>
+            <div className="flex items-center text-black ml-2">
+                <div className="flex items-center text-black p-1.5 w-full rounded-md hover:bg-sky-100 cursor-pointer transition-all duration-200">
+                    <RefreshCcwDot className="flex mr-3" size={16} />
+                    <h2 className="text-sm">Cycles</h2>
+                </div>
             </div>
-            <div className="flex items-center text-black mt-4">
-                <AlarmClock className="flex mr-3" size={16} />
-                <h2 className="text-sm">Post-launch nurture</h2>
+            <div className="flex items-center text-black">
+                <div className="flex items-center text-black p-1.5 w-full rounded-md hover:bg-sky-100 cursor-pointer transition-all duration-200">
+                    <AlarmClock className="flex mr-3" size={16} />
+                    <h2 className="text-sm">Post-launch nurture</h2>
+                </div>
             </div>
         </div>
     )
